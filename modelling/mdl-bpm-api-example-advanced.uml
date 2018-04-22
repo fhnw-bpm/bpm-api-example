@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>MODULES</ID>
+  <OriginalElement>mdl-bpm-api-example-advanced</OriginalElement>
+  <nodes>
+    <node x="249.5" y="80.0">mdl-rest-api</node>
+    <node x="17.962121212121218" y="240.0">mdl-model</node>
+    <node x="248.45909090909092" y="160.0">mdl-service-api</node>
+    <node x="82.5" y="80.0">mdl-service-impl</node>
+    <node x="85.5" y="0.0">mdl-application</node>
+    <node x="10.5" y="160.0">mdl-repository</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="mdl-application" target="mdl-service-api">
+      <point x="56.4" y="15.0" />
+      <point x="212.4" y="50.0" />
+      <point x="382.0" y="50.0" />
+      <point x="382.0" y="135.0" />
+      <point x="364.29242424242426" y="135.0" />
+      <point x="46.33333333333334" y="-15.0" />
+    </edge>
+    <edge source="mdl-rest-api" target="mdl-service-api">
+      <point x="0.0" y="15.0" />
+      <point x="310.5" y="135.0" />
+      <point x="317.95909090909095" y="135.0" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="mdl-application" target="mdl-model">
+      <point x="-56.400000000000006" y="15.0" />
+      <point x="99.6" y="50.0" />
+      <point x="0.0" y="50.0" />
+      <point x="0.0" y="215.0" />
+      <point x="37.29545454545456" y="215.0" />
+      <point x="-38.66666666666666" y="-15.0" />
+    </edge>
+    <edge source="mdl-repository" target="mdl-model">
+      <point x="0.0" y="15.0" />
+      <point x="78.0" y="215.0" />
+      <point x="75.96212121212122" y="215.0" />
+      <point x="-7.105427357601002E-15" y="-15.0" />
+    </edge>
+    <edge source="mdl-application" target="mdl-rest-api">
+      <point x="28.199999999999996" y="15.0" />
+      <point x="184.2" y="60.0" />
+      <point x="310.5" y="60.0" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="mdl-service-impl" target="mdl-model">
+      <point x="0.0" y="15.0" />
+      <point x="156.0" y="215.0" />
+      <point x="114.62878787878788" y="215.0" />
+      <point x="38.66666666666666" y="-15.0" />
+    </edge>
+    <edge source="mdl-service-impl" target="mdl-service-api">
+      <point x="49.0" y="15.0" />
+      <point x="205.0" y="135.0" />
+      <point x="271.6257575757576" y="135.0" />
+      <point x="-46.333333333333336" y="-15.0" />
+    </edge>
+    <edge source="mdl-application" target="mdl-service-impl">
+      <point x="0.0" y="15.0" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="mdl-application" target="mdl-repository">
+      <point x="-28.200000000000003" y="15.0" />
+      <point x="127.8" y="60.0" />
+      <point x="44.25" y="60.0" />
+      <point x="-33.75" y="-15.0" />
+    </edge>
+    <edge source="mdl-service-impl" target="mdl-repository">
+      <point x="-49.0" y="15.0" />
+      <point x="107.0" y="135.0" />
+      <point x="111.75" y="135.0" />
+      <point x="33.75" y="-15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="186.5" y="135.0" />
+  <SelectedNodes />
+  <Categories />
+</Diagram>
+
