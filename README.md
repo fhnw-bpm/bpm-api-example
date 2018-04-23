@@ -1,5 +1,7 @@
 # BPM API Example
 
+This example illustrates how a REST API can be implemented with the help of the Spring framework.
+
 #### Contents:
 - [Analysis](#analysis)
 - [Design](#design)
