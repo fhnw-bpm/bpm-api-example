@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/pizza/v1")
+@RequestMapping(path = "/api/pizza/v1")
 public class PizzaEndpoint {
     @Autowired
     private OrderRepository orderRepository;
@@ -33,7 +33,7 @@ public class PizzaEndpoint {
 
     @PostMapping(path = "/order", consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public PizzaResponse postOrder(@RequestBody OrderRequest order, UriComponentsBuilder uriComponentsBuilder) {
+    public PizzaResponse postOrder(@RequestBody OrderRequest order) {
         OrderEntity orderEntity = order.getOrderEntity();
         List<CustomerEntity> customerList = customerRepository.findByEmail(orderEntity.getCustomer().getEmail());
         if(!customerList.isEmpty()){

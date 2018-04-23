@@ -22,7 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/pizza/v1")
+@RequestMapping(path = "/api/pizza/v1")
 public class PizzaEndpoint {
     @Autowired
     private PizzaService pizzaService;

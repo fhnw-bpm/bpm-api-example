@@ -157,7 +157,7 @@ public class PaymentEntity {
 
 ### Repositories
 
-The [Spring Data](https://projects.spring.io/spring-data) is providing the following interface, annotations and methods to access the data in CRUD (create, read, update and delete) style:
+[Spring Data](https://projects.spring.io/spring-data) is providing the following interface, annotations and methods to access the data in CRUD (create, read, update and delete) style:
 - `JpaRepository` provides JPA related methods such as CRUD functions.
 - `@Repository` tells spring data that it will auto-generate the implementation based on class name provided.
 - `@Param` is used before the method param to create a named parameter.
@@ -195,7 +195,7 @@ Create the `ch.fhnw.bpm.api.business.endpoint` package and in this package follo
 
 ```Java
 @RestController
-@RequestMapping(value = "/api/pizza/v1")
+@RequestMapping(path = "/api/pizza/v1")
 public class PizzaEndpoint {
     @Autowired
     private OrderRepository orderRepository;
@@ -288,16 +288,26 @@ private static class PaymentRequest {
 
 ### API Implementation
 
+[Spring Web](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html) is providing the following annotations to implement REST services:
+
+- `@RestController` annotation identifies a Spring Web REST component.
+- `@RequestMapping` defines the basic `path` of a REST API.
+- `@GetMapping`, `@PutMapping`, `@PostMapping` and `@DeleteMapping` can be used to define the basic CRUD-style REST verbs and HTTP methods in companion with the corresponding `path` and its resource representation format specified by `consumes` and `produces`.
+- `@ResponseStatus` can be used to define the default HTTP response status code.
+- `@RequestBody` declares an method parameter to be the body of a request. 
+- `@RequestParam` stands for a query parameter that can be added to a requesting path.
+- `@PathVariable` declares an method parameter to be the placeholder of a path such as `/api/v1/xyz/{pathVariable}`
+
 Implement the following `POST` an order (`/api/pizza/v1/order`) method including the business logic that a customer will only be created if the email does not already exist:
 
 ```Java
 @RestController
-@RequestMapping(value = "/api/pizza/v1")
+@RequestMapping(path = "/api/pizza/v1")
 public class PizzaEndpoint {
     /* ... */
     @PostMapping(path = "/order", consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public PizzaResponse postOrder(@RequestBody OrderRequest order, UriComponentsBuilder uriComponentsBuilder) {
+    public PizzaResponse postOrder(@RequestBody OrderRequest order) {
         OrderEntity orderEntity = order.getOrderEntity();
         List<CustomerEntity> customerList = customerRepository.findByEmail(orderEntity.getCustomer().getEmail());
         if(!customerList.isEmpty()){
@@ -314,7 +324,7 @@ Then implement the following `GET` all orders (`/api/pizza/v1/order`) or all unp
 
 ```Java
 @RestController
-@RequestMapping(value = "/api/pizza/v1")
+@RequestMapping(path = "/api/pizza/v1")
 public class PizzaEndpoint {
     /* ... */
     @GetMapping(path = "/order", produces = "application/json")
@@ -336,7 +346,7 @@ Implement the following `POST` a payment (`/api/pizza/v1/payment/{businessKey}`)
 
 ```Java
 @RestController
-@RequestMapping(value = "/api/pizza/v1")
+@RequestMapping(path = "/api/pizza/v1")
 public class PizzaEndpoint {
     /* ... */
     @PostMapping(path = "/payment/{businessKey}", consumes = "application/json", produces = "application/json")
@@ -392,4 +402,4 @@ public class SwaggerConfig {
 }
 ```
 
-Once you compiled and booted up the microservice, you can access the Swagger UI under http://localhost:8080/swagger-ui.html or http://localhost:8081/swagger-ui.html
+Once you compiled and booted up the microservice, you can access the Swagger UI under http://localhost:8081/swagger-ui.html or http://localhost:8080/swagger-ui.html if the port has not been changed.
