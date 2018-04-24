@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -69,7 +68,7 @@ public class PizzaEndpoint {
     }
 
     @PostMapping(path = "/payment/{businessKey}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity postPayment(@RequestBody PaymentRequest payment, @PathVariable(value = "businessKey") String businessKey, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity postPayment(@RequestBody PaymentRequest payment, @PathVariable(value = "businessKey") String businessKey) {
         HttpHeaders headers = new HttpHeaders();
         PaymentDTO paymentDTO = pizzaService.updatePaymentOfOrder(payment.getPaymentDTO(), businessKey);
         headers.setLocation(ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(paymentDTO.getId()).toUri());
