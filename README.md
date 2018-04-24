@@ -101,6 +101,10 @@ The [Java Persistence API (JPA)](http://www.oracle.com/technetwork/java/javaee/t
 Create the `ch.fhnw.bpm.api.data.domain` package and in this package the following domain objects including getters and setters:
 
 ```Java
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Entity
 public class CustomerEntity {
     @Id
@@ -118,6 +122,11 @@ public class CustomerEntity {
 ```
 
 ```Java
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+
 @Entity
 public class OrderEntity {
     @Id
@@ -141,6 +150,11 @@ public class OrderEntity {
 ```
 
 ```Java
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+
 @Entity
 public class PaymentEntity {
     @Id
@@ -168,6 +182,9 @@ public class PaymentEntity {
 Create the `ch.fhnw.bpm.api.data.repository` package and in this package the following repository interfaces:
 
 ```Java
+import java.util.List;
+import org.springframework.data.repository.query.Param;
+
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
     List<CustomerEntity> findByEmail(@Param("email") String email);
@@ -175,6 +192,9 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> 
 ```
 
 ```Java
+import java.util.List;
+import org.springframework.data.repository.query.Param;
+
 @Repository
 public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
     List<OrderEntity> findByBusinessKey(@Param("businessKey") String businessKey);
@@ -196,6 +216,8 @@ As mentioned at the beginning, this basic example project combines business and 
 Create the `ch.fhnw.bpm.api.business.endpoint` package and in this package following `PizzaEndpoint` class:
 
 ```Java
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/api/pizza/v1")
 public class PizzaEndpoint {
