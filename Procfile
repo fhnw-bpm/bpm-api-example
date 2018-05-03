@@ -1,1 +1,0 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar bpm-api-example-advanced/target/*.jar --spring.profiles.active=prod,heroku
