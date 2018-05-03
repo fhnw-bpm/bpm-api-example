@@ -19,6 +19,5 @@ public interface OrderMapper {
     OrderDTO entityToDto(OrderEntity entity);
     @Mappings(@Mapping(target = "customer.orders", ignore = true))
     OrderEntity dtoToEntity(OrderDTO dto);
-    @Mappings(@Mapping(target = "customer.orders", ignore = true))
     List<OrderDTO> entitiesToDtos(List<OrderEntity> entities);
 }
