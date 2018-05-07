@@ -14,10 +14,9 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
-
-    @Mappings(@Mapping(target = "customer.orders", ignore = true))
+    @Mappings({@Mapping(target = "customer.orders", ignore = true), @Mapping(target = "payment.order", ignore = true)})
     OrderDTO entityToDto(OrderEntity entity);
-    @Mappings(@Mapping(target = "customer.orders", ignore = true))
+    @Mappings({@Mapping(target = "customer.orders", ignore = true), @Mapping(target = "payment.order", ignore = true)})
     OrderEntity dtoToEntity(OrderDTO dto);
     List<OrderDTO> entitiesToDtos(List<OrderEntity> entities);
 }
