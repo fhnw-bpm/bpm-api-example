@@ -55,7 +55,7 @@ public class PizzaEndpoint {
 
     @PutMapping (path = "/order/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void patchOrder(@PathVariable(value = "id") long id, @RequestBody OrderRequest order) {
+    public void putOrder(@PathVariable(value = "id") long id, @RequestBody OrderRequest order) {
         OrderDTO orderDTO = order.getOrderDTO();
         orderDTO.setId(id);
         pizzaService.updateOrder(orderDTO);
@@ -82,7 +82,7 @@ public class PizzaEndpoint {
 
     @PutMapping (path = "/payment/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void patchOrder(@PathVariable(value = "id") long id, @RequestBody PaymentRequest payment) {
+    public void putOrder(@PathVariable(value = "id") long id, @RequestBody PaymentRequest payment) {
         PaymentDTO paymentDTO = payment.getPaymentDTO();
         paymentDTO.setId(id);
         pizzaService.updatePayment(paymentDTO);
